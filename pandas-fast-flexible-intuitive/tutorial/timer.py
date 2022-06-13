@@ -60,10 +60,7 @@ def timeit(_func=None, *, repeat=3, number=1000, file=sys.stdout):
                 # caused by variability in Python’s speed, but by other
                 # processes interfering with your timing accuracy."
                 best = min(trials) / number
-                print(
-                    "Best of {} trials with {} function"
-                    " calls per trial:".format(repeat, number)
-                )
+                print(f"Best of {repeat} trials with {number} function calls per trial:")
                 print(
                     "Function `{}` ran in average"
                     " of {:0.3f} seconds.".format(func.__name__, best),

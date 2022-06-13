@@ -6,11 +6,12 @@ The decorators with dependencies outside of the standard library (Flask
 and Pint) are available in separate files.
 """
 
+
 import functools
 import time
 
 
-PLUGINS = dict()  # Dictionary used by @register to store plugins
+PLUGINS = {}
 
 
 def do_twice(func):
