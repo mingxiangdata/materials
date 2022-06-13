@@ -57,8 +57,6 @@ def not_during_the_night(func):
     def wrapper():
         if 7 <= datetime.now().hour < 22:
             func()
-        else:
-            pass  # Hush, the neighbors are asleep.
 
     return wrapper
 
@@ -95,10 +93,8 @@ def return_greeting(name):
 def decorator(func):
     @functools.wraps(func)
     def wrapper_decorator(*args, **kwargs):
-        # Do something before.
-        value = func(*args, **kwargs)
         # Do something after.
-        return value
+        return func(*args, **kwargs)
 
     return wrapper_decorator
 
@@ -107,7 +103,7 @@ def decorator(func):
 @timer
 def waste_some_time(num_times):
     for _ in range(num_times):
-        sum([i**2 for i in range(10000)])
+        sum(i**2 for i in range(10000))
 
 
 # Debugging Code
@@ -204,7 +200,7 @@ class TimeWaster:
     @timer
     def waste_time(self, num_times):
         for _ in range(num_times):
-            sum([i**2 for i in range(self.max_num)])
+            sum(i**2 for i in range(self.max_num))
 
 
 # Nesting Decorators
@@ -224,9 +220,7 @@ class TheOne:
 @cache
 @count_calls
 def fibonacci(num):
-    if num < 2:
-        return num
-    return fibonacci(num - 1) + fibonacci(num - 2)
+    return num if num < 2 else fibonacci(num - 1) + fibonacci(num - 2)
 
 
 @functools.lru_cache(maxsize=4)  # lru_cache is preferred to rolling your own

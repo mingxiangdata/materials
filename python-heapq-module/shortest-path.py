@@ -50,7 +50,7 @@ def find_path(map):
     tentative = {origin: []}
     candidates = [(0, origin)]
     certain = set()
-    while destination not in certain and len(candidates) > 0:
+    while destination not in certain and candidates:
         _ignored, current = heapq.heappop(candidates)
         if current in certain:
             continue
@@ -69,7 +69,7 @@ def find_path(map):
 def show_path(path, map):
     lines = map.splitlines()
     for x, y in path:
-        lines[y] = lines[y][:x] + "@" + lines[y][x + 1 :]
+        lines[y] = f"{lines[y][:x]}@{lines[y][x + 1 :]}"
     return "\n".join(lines) + "\n"
 
 

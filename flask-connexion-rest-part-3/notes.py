@@ -20,8 +20,7 @@ def read_all():
 
     # Serialize the list of notes from our data
     note_schema = NoteSchema(many=True, exclude=["person.notes"])
-    data = note_schema.dump(notes).data
-    return data
+    return note_schema.dump(notes).data
 
 
 def read_one(person_id, note_id):
@@ -45,10 +44,8 @@ def read_one(person_id, note_id):
     # Was a note found?
     if note is not None:
         note_schema = NoteSchema()
-        data = note_schema.dump(note).data
-        return data
+        return note_schema.dump(note).data
 
-    # Otherwise, nope, didn't find that note
     else:
         abort(404, f"Note not found for Id: {note_id}")
 
